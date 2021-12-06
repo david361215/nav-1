@@ -42,7 +42,7 @@ const render = ()=>{
     });
 };
 render();
-$('.addButton').on('click', ()=>{
+$('.addButton').on('click', (e)=>{
     let url = window.prompt('请问您要添加的网址是啥');
     if (!url) return;
     if (url.indexOf('https') !== 0) url = 'https://' + url;
@@ -56,9 +56,12 @@ window.onbeforeunload = ()=>{
     const string = JSON.stringify(hashMap);
     localStorage.setItem('x', string);
 };
+$('.globalHeader input').on('keypress', (e)=>{
+    e.stopPropagation();
+});
 $(document).on('keypress', (e)=>{
     const { key  } = e;
     for(let i = 0; i < hashMap.length; i++)if (hashMap[i].logo.toLowerCase() === key) window.open(hashMap[i].url);
 });
 
-//# sourceMappingURL=index.49368ccb.js.map
+//# sourceMappingURL=index.33b6323a.js.map

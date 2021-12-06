@@ -43,7 +43,7 @@ const render = ()=>{
 
 render();
 
-$('.addButton').on('click',()=>{
+$('.addButton').on('click',(e)=>{
   let url = window.prompt('请问您要添加的网址是啥');
   if (!url)return;
   if(url.indexOf('https')!==0){
@@ -60,6 +60,10 @@ window.onbeforeunload = ()=>{
     const string = JSON.stringify(hashMap);
     localStorage.setItem('x',string);
 }
+
+$('.globalHeader input').on('keypress',(e)=>{
+    e.stopPropagation()
+})
 
 $(document).on('keypress',(e)=>{
     const {key} = e;
